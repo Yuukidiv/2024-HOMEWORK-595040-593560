@@ -87,12 +87,14 @@ public class DiaDia {
 		Attrezzo att = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(attrezzo);
 		this.partita.getGiocatore().getBorsa().addAttrezzo(att);
 		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(att);
+		IOConsole.mostraMessaggio(this.partita.getGiocatore().getBorsa().getDescrizione());
 	}
 		
 	private void posa(String attrezzo) {
 		Attrezzo att = this.partita.getGiocatore().getBorsa().getAttrezzo(attrezzo);
 		this.partita.getLabirinto().getStanzaCorrente().addAttrezzo(att);
 		this.partita.getGiocatore().getBorsa().removeAttrezzo(attrezzo);
+		IOConsole.mostraMessaggio(this.partita.getGiocatore().getBorsa().getDescrizione());
 	}
 	
 	
