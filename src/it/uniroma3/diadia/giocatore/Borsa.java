@@ -80,6 +80,14 @@ public class Borsa {
 		return a;
 	}
 
+	 /**
+     * Restituisce la descrizione della borsa.
+     * @return la descrizione della stanza
+     */
+    public String getDescrizione() {
+        return this.toString();
+    }
+	
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		if (!this.isEmpty()) {
