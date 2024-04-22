@@ -20,7 +20,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class DiaDia {
 
-	static final private String MESSAGGIO_BENVENUTO = ""+
+	static final private String MESSAGGIO_BENVENUTO = "Ciao"+
 			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
 			"Meglio andare al piu' presto in biblioteca a studiare. Ma dov'e'?\n"+
 			"I locali sono popolati da strani personaggi, " +
