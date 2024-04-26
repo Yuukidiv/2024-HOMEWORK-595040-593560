@@ -13,23 +13,23 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  * @version base
 */
 
-public class Stanza {
+public class StanzaProtected {
 	
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
-	private String nome;
+	protected String nome;
 	protected Attrezzo[] attrezzi;
 	protected int numeroAttrezzi;
-    private Stanza[] stanzeAdiacenti;
+	protected Stanza[] stanzeAdiacenti;
     protected int numeroStanzeAdiacenti;
-	private String[] direzioni;
+    protected String[] direzioni;
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
      * @param nome il nome della stanza
      */
-    public Stanza(String nome) {
+    public StanzaProtected(String nome) {
         this.nome = nome;
         this.numeroStanzeAdiacenti = 0;
         this.numeroAttrezzi = 0;
@@ -58,11 +58,6 @@ public class Stanza {
     		    this.numeroStanzeAdiacenti++;
     		}
     }
-    
-    public Stanza[] getStanzeAdiacenti() {
-    	return this.stanzeAdiacenti;
-    }
-    
 
     /**
      * Restituisce la stanza adiacente nella direzione specificata
@@ -82,7 +77,7 @@ public class Stanza {
      */
     public String getNome() {
         return this.nome;
-    }    
+    }
 
     /**
      * Restituisce la descrizione della stanza.
@@ -198,7 +193,6 @@ public class Stanza {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)
 	    	direzioni[i] = this.direzioni[i];
-	    
 	    return direzioni;
     }
 

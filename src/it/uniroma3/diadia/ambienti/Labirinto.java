@@ -67,8 +67,4 @@ public class Labirinto {
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
-	
-
-    
-    
 }

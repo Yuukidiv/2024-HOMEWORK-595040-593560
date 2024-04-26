@@ -67,19 +67,16 @@ public class Borsa {
 		if(nomeAttrezzo != null) {
 			// check se ci sta nell'array
 			for(int i = 0; i<numeroAttrezzi; i++) {
-				if(this.attrezzi[i].getNome().equals(nomeAttrezzo) && i<numeroAttrezzi-1 && this.attrezzi[i]!=null) {
+				if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
 					a = this.attrezzi[i];
 					this.attrezzi[i] = null;
-					/*for(int j = i;j<numeroAttrezzi; j++) {
-						this.attrezzi[i] = this.attrezzi[i+1];
-					}*/
 					this.numeroAttrezzi = this.numeroAttrezzi - 1;
 				}
 			}
 		}
 		return a;
 	}
-
+	
 	 /**
      * Restituisce la descrizione della borsa.
      * @return la descrizione della stanza
@@ -87,7 +84,7 @@ public class Borsa {
     public String getDescrizione() {
         return this.toString();
     }
-	
+
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		if (!this.isEmpty()) {
