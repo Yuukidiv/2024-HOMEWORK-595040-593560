@@ -11,7 +11,7 @@ public class ComandoPrendi implements Comando{
 	public void esegui(Partita partita) {
 		Attrezzo att = partita.getLabirinto().getStanzaCorrente().getAttrezzo(attrezzo);
 		partita.getGiocatore().getBorsa().addAttrezzo(att);
-		partita.getLabirinto().getStanzaCorrente().removeAttrezzo(att);
+		partita.getStanzaCorrente().removeAttrezzo(att);
 	}
 	
 	@Override
