@@ -10,7 +10,7 @@ public class ComandoPosa implements Comando{
 	@Override
 	public void esegui(Partita partita) {
 		Attrezzo att = partita.getGiocatore().getBorsa().getAttrezzo(attrezzo);
-		partita.getLabirinto().getStanzaCorrente().addAttrezzo(att);
+		partita.getStanzaCorrente().addAttrezzo(att);
 		partita.getGiocatore().getBorsa().removeAttrezzo(attrezzo);
 	}
 	
