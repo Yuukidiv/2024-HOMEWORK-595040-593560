@@ -9,7 +9,7 @@ public class ComandoPrendi implements Comando{
 	
 	@Override 
 	public void esegui(Partita partita) {
-		Attrezzo att = partita.getLabirinto().getStanzaCorrente().getAttrezzo(attrezzo);
+		Attrezzo att = partita.getStanzaCorrente().getAttrezzo(attrezzo);
 		partita.getGiocatore().getBorsa().addAttrezzo(att);
 		partita.getStanzaCorrente().removeAttrezzo(att);
 	}
