@@ -53,8 +53,11 @@ public class StanzaBloccata extends Stanza{
 
 	@Override
 	public String getDescrizione() {
-		return "Direzione bloccata. Avrai bisogno di "
-				+ attrezzo + " per passare!"
-				+ " " + this.toString();
+		if(!hasAttrezzo(attrezzo)) {
+			return "Direzione bloccata. Avrai bisogno di "
+					+ attrezzo + " per passare!"
+					+ " " + this.toString();
+		} 
+		return super.getDescrizione();
 	}
 }
