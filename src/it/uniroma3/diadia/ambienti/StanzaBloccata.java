@@ -1,10 +1,12 @@
 package it.uniroma3.diadia.ambienti;
 
+import java.util.Map;
+
 public class StanzaBloccata extends Stanza{
 
 	private String direzioneBloccata;
 	private String attrezzo;
-	private Stanza[] stanzeAdiacenti;
+	private Map<String,Stanza> stanzeAdiacenti;
 
 	public StanzaBloccata(String nome, String direzioneBloccata, String attrezzo) {
 		super(nome);
@@ -28,27 +30,14 @@ public class StanzaBloccata extends Stanza{
 	public void setAttrezzo(String attrezzo) {
 		this.attrezzo = attrezzo;
 	}
-
-	public boolean attrezzoNellaStanza() {
-		for(int i=0; i<this.numeroAttrezzi; i++) {
-			if(attrezzi[i].getNome().equals(this.attrezzo)) return true;
-		}
-
-		return false;
-	}
-
+	
 	@Override
 	public Stanza getStanzaAdiacente(String dir) {
-		if(this.direzioneBloccata==dir && !this.attrezzoNellaStanza()) {
+		if(this.direzioneBloccata==dir && !this.hasAttrezzo(attrezzo)) {
 			this.getDescrizione(); 
 			return this;
 		}
-		Stanza stanza = null;
-		String[] direzioni = this.getDirezioni();
-		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-			if (direzioni[i].equals(dir))
-				stanza = this.stanzeAdiacenti[i];
-		return stanza;
+		return this.stanzeAdiacenti.get(dir);
 	}
 
 	@Override
