@@ -9,33 +9,28 @@ import org.junit.Test;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaTest {
-	private Stanza stanzina;
-	private Stanza stanzona;
-	private Attrezzo attrezzo;
-
 	
+	private Stanza stanza = new Stanza("Atrio");
+	private Attrezzo osso = new Attrezzo("osso", 1);
 	
-	@Before
-	public void setUp() {
-		this.stanzina = new Stanza("vuota");
-		this.stanzona = new Stanza("nonVuota");
-		this.attrezzo = new Attrezzo("spada", 10);
-		stanzona.addAttrezzo(attrezzo);
+	@Test
+	public void testGetNomeStanza() {
+		assertEquals(this.stanza.getNome(), "Atrio");
 	}
 	
 	@Test
-	public void testStanzaSenzaAttrezzi() {	
-		assertNull(stanzina.getAttrezzo("NonCiSonoeheh"));
+	public void testAddHasGetAttrezzo() {
+		this.stanza.addAttrezzo(this.osso);
+		assertTrue(this.stanza.hasAttrezzo("osso"));
+		assertEquals(this.stanza.getAttrezzo("osso"), this.osso);
 	}
 	
 	@Test
-	public void testStanzaNonVuota() {	
-		assertNotNull(stanzona.getAttrezzo("spada"));
-	}
-	
-	@Test
-	public void testStanzaNonVuotaAttrezzoAssente() {	
-		assertNull(stanzona.getAttrezzo("martello"));
+	public void testRemoveAttrezzo() {
+		this.stanza.addAttrezzo(osso);
+		assertTrue(this.stanza.hasAttrezzo("osso"));
+		this.stanza.removeAttrezzo(osso);
+		assertFalse(this.stanza.hasAttrezzo("osso"));
 	}
 	
 

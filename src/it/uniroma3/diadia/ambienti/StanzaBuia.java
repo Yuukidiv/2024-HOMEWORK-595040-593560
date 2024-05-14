@@ -21,7 +21,9 @@ public class StanzaBuia extends Stanza{
 	
 	@Override
 	public String getDescrizione() {
-		return FRASE_DEFAULT;
+		if(!this.hasAttrezzo(attrezzo))
+			return FRASE_DEFAULT;
+		return this.toString();
 	}
 
 }
