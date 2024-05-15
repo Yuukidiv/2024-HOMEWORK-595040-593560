@@ -2,14 +2,19 @@ package it.uniroma3.diadia.giocatore;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.attrezzi.ComparatoreAttrezziPerNome;
+import it.uniroma3.diadia.attrezzi.ComparatoreAttrezziPerPeso;
 
 public class Borsa {
 
@@ -114,17 +119,40 @@ public class Borsa {
 	}
 	
 	public List<Attrezzo> getContenutoOrdinatoPerPeso(){
-		List<Attrezzo> listaOrdinata = new ArrayList<Attrezzo>();
-		listaOrdinata.addAll(this.attrezzi);
-		Collections.sort(listaOrdinata);
-		System.out.println(listaOrdinata);
-		return listaOrdinata;
+		ComparatoreAttrezziPerPeso comp = new ComparatoreAttrezziPerPeso();
+		List<Attrezzo> listaOrdinataPerPeso = new ArrayList<Attrezzo>();
+		listaOrdinataPerPeso.addAll(this.attrezzi);
+		Collections.sort(listaOrdinataPerPeso, comp);
+		System.out.println(listaOrdinataPerPeso);
+		return listaOrdinataPerPeso;
 	}
 	
 	public SortedSet<Attrezzo> getContenutoOrdinatoPerNome(){
-		SortedSet<Attrezzo> setOrdinato = new TreeSet<Attrezzo>();
-		
-		return setOrdinato;
+		ComparatoreAttrezziPerNome cmp = new ComparatoreAttrezziPerNome();
+		SortedSet<Attrezzo> setOrdinatoPerNome = new TreeSet<Attrezzo>(cmp);
+		setOrdinatoPerNome.addAll(this.attrezzi);
+		return setOrdinatoPerNome;
 	}
-
+	
+	public Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso(){
+		Map<Integer,Set<Attrezzo>> mappaRaggruppataPerPeso = new TreeMap<>();
+		for(Attrezzo att : attrezzi) {
+			if(mappaRaggruppataPerPeso.containsKey(att.getPeso())) 
+				mappaRaggruppataPerPeso.get(att.getPeso()).add(att);
+			else {
+				Set<Attrezzo> setAttrezzo = new HashSet<Attrezzo>();
+				setAttrezzo.add(att);
+				mappaRaggruppataPerPeso.put(att.getPeso(), setAttrezzo);
+			}
+		}
+		return mappaRaggruppataPerPeso;
+	}
+	
+	public SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso(){
+		ComparatoreAttrezziPerPeso cmp = new ComparatoreAttrezziPerPeso();
+		SortedSet<Attrezzo> sortedSetOrdinatoPerPeso = new TreeSet<Attrezzo>(cmp);
+		sortedSetOrdinatoPerPeso.addAll(this.attrezzi);
+		System.out.println(sortedSetOrdinatoPerPeso);
+		return sortedSetOrdinatoPerPeso;
+	}
 }
