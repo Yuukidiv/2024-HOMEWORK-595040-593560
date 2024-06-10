@@ -14,24 +14,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class ComandoPrendiTest {
 	
 	private ComandoPrendi comandoPrendi = new ComandoPrendi();
-	private Stanza a1;
-	private Attrezzo att;
-	private Comando prendi;
-	private Partita p;
-	private Labirinto lab;
-	// test implementabili da fare anche altri
-	@Before
-	public void setUp() {
-		att = new Attrezzo("cuffie", 2);
-		lab = new LabirintoBuilder()
-				.addStanzaIniziale("Atrio")
-				.addAttrezzo("cartaIgienica", 3)
-				.addStanzaVincente("Biblioteca")
-				.addAdiacenza("Atrio", "Biblioteca", "nord")
-				.getLabirinto();
-		p = new Partita(lab);
-
-	}
+	
 	
 	@Test
 	public void testSetAttrezzo() {

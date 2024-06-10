@@ -1,32 +1,37 @@
 package it.uniroma3.diadia.ambienti;
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+
 import org.junit.Before;
 import org.junit.Test;
 
-public class LabirintoTest {
+import it.uniroma3.diadia.FormatoFileNonValidoException;
 
-	private Labirinto labirinto;
+public class LabirintoTest {
 	
+	Labirinto l;
+
 	@Before
-	public void setUp() {
-		
-		this.labirinto = new Labirinto();
-		
+	public void setUp() throws FileNotFoundException, FormatoFileNonValidoException {
+		l = Labirinto.newBuilder("labirinto.txt").getLabirinto();
+	}
+	
+	
+	@Test
+	public void testStanzaVincente() {
+		assertEquals("N11",l.getStanzaVincente().getNome());
 	}
 	
 	@Test
-	public void testLabirintoNonVuoto() {
-		assertNotNull(labirinto.getStanzaCorrente());
+	public void testStanzaIniziale() {
+		assertEquals("biblioteca",l.getStanzaCorrente().getNome());
 	}
 	
 	@Test
-	public void testStanzaVincenteGiusta() {
-		assertEquals("Biblioteca",labirinto.getStanzaVincente().getNome());
-	}
-	
-	@Test
-	public void testStanzaCorrenteGiusta() {
-		assertEquals("Atrio",labirinto.getStanzaCorrente().getNome());
+	public void testStanzaCorrente() {
+		Stanza N10 = new Stanza("N10");
+		l.setStanzaCorrente(N10);
+		assertEquals("N10", l.getStanzaCorrente().getNome());
 	}
 }
