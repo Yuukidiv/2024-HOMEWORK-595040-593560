@@ -26,6 +26,11 @@ public class Cane extends AbstractPersonaggio {
 	public String riceviRegalo(Attrezzo attrezzo, Partita partita) {
 
 		StringBuilder risposta = new StringBuilder("");
+		
+		if(attrezzo==null) {
+			risposta.append(this.agisci(partita));
+			return risposta.toString();
+		}
 
 		if(attrezzo.getNome().equals(NOME_ATTREZZO_PREFERITO)) {
 			Attrezzo attrezzoRicevuto = new Attrezzo("Moneta", 1);
