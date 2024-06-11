@@ -1,0 +1,5 @@
+diadia.properties:
+#Configurazione del gioco diadia
+#11, Giugno, 2024
+cfu=30
+pesoMax=20
