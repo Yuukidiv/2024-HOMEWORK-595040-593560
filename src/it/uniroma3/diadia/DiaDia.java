@@ -4,8 +4,6 @@ package it.uniroma3.diadia;
 import java.util.Scanner;
 
 import it.uniroma3.diadia.comandi.Comando;
-import it.uniroma3.diadia.comandi.FabbricaDiComandi;
-import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 import it.uniroma3.diadia.ambienti.Labirinto;
 /**
@@ -85,7 +83,7 @@ public class DiaDia {
 //				.addAdiacenza("LabCampusOne","Bagno","nord")
 //				.addAdiacenza("Bagno","Biblioteca","ovest")
 //				.getLabirinto();
-		Labirinto labirinto = Labirinto.newBuilder("labirinto.txt").getLabirinto();
+		Labirinto labirinto = Labirinto.newBuilder("labirinto5.txt").getLabirinto();
 		DiaDia gioco = new DiaDia(ioconsole, labirinto);
 		gioco.gioca();
 	}

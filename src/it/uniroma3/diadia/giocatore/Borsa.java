@@ -1,7 +1,6 @@
 package it.uniroma3.diadia.giocatore;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.attrezzi.ComparatoreAttrezziPerNome;
 import it.uniroma3.diadia.attrezzi.ComparatoreAttrezziPerPeso;
 
 public class Borsa {

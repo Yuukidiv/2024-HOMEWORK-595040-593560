@@ -35,6 +35,7 @@ public class Cane extends AbstractPersonaggio {
 		if(attrezzo.getNome().equals(NOME_ATTREZZO_PREFERITO)) {
 			Attrezzo attrezzoRicevuto = new Attrezzo("Moneta", 1);
 			partita.getStanzaCorrente().addAttrezzo(attrezzoRicevuto);
+			risposta.append(MESSAGGIO_CANE_DOCILE);
 			risposta.append("Hai ricevuto in cambio: " + attrezzoRicevuto.getNome());
 		} 
 		else {
