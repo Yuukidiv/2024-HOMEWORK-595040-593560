@@ -7,11 +7,20 @@ public class ComandoPrendi extends AbstractComando{
 	private final static String NOME = "Prendi";
 	private String attrezzo;
 	
-	@Override 
+	@Override
 	public void esegui(Partita partita) {
-		Attrezzo att = partita.getStanzaCorrente().getAttrezzo(attrezzo);
-		partita.getGiocatore().getBorsa().addAttrezzo(att);
-		partita.getStanzaCorrente().removeAttrezzo(att);
+		Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(this.getParametro());
+		if(a==null) {
+			this.getIo().mostraMessaggio("Attrezzo non presente nella stanza!");
+		} 
+		else {
+			if(partita.getGiocatore().getBorsa().getPeso()>=a.getPeso()) {
+				partita.getGiocatore().getBorsa().addAttrezzo(a);
+				partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
+			} 
+			else
+				this.getIo().mostraMessaggio("Attrezzo troppo pesante per entrare nella borsa!");
+			}
 	}
 	
 	@Override

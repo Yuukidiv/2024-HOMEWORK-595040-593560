@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.FabbricaDiComandi;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 /**
@@ -17,7 +19,7 @@ import it.uniroma3.diadia.ambienti.LabirintoBuilder;
  *         (da un'idea di Michael Kolling and David J. Barnes) 
  *          
  * @version base
- */
+ */ 
 
 public class DiaDia {
 
@@ -39,7 +41,7 @@ public class DiaDia {
 		this.partita = new Partita(lab);
 	}
 
-	public void gioca() {
+	public void gioca() throws Exception {
 		String istruzione; 
 		Scanner scannerDiLinee;
 
@@ -55,18 +57,19 @@ public class DiaDia {
 	 * Processa una istruzione 
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
+	 * @throws Exception 
 	 */
-	private boolean processaIstruzione(String istruzione) {
+	private boolean processaIstruzione(String istruzione) throws Exception {
 		Comando comandoDaEseguire;
 		FabbricaDiComandi factory = new FabbricaDiComandiFisarmonica();
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta())
 
-			System.out.println("Hai vinto!");
+			io.mostraMessaggio("Hai vinto!");
 		if (!this.partita.giocatoreIsVivo())
 
-			System.out.println("Hai esaurito i CFU...");
+			io.mostraMessaggio("Hai esaurito i CFU...");
 
 		return this.partita.isFinita();
 	}

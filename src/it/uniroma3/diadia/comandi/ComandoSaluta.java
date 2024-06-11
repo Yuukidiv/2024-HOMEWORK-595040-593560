@@ -26,5 +26,10 @@ public class ComandoSaluta extends AbstractComando {
 			io.mostraMessaggio("In questa stanza non ci sta nessuno, sto impazzendo!");
 	}
 	
+	@Override
+	public void setIo(IO io) {
+		this.io = io;
+	}
+	
 
 }

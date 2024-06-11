@@ -20,18 +20,18 @@ public class ComandoVai extends  AbstractComando{
 			this.direzione = Direzione.valueOf(this.getParametro());
 		
 		if(direzione == null) {
-			System.out.println("Dove vuoi andare? Devi specificare una direzione");
+			this.getIo().mostraMessaggio("Dove vuoi andare? Devi specificare una direzione");
 			return;		
 		}
 		
 		prossimaStanza = stanzaCorrente.getStanzaAdiacente(this.direzione);
 		if (prossimaStanza==null) {
-			System.out.println("Direzione inesistente");
+			this.getIo().mostraMessaggio("Direzione inesistente");
 			return;
 		}
 		
 		partita.setStanzaCorrente(prossimaStanza);
-		System.out.println(prossimaStanza);
+		this.getIo().mostraMessaggio(prossimaStanza.getDescrizione());
 		partita.getGiocatore().setCfu(partita.getGiocatore().getCfu()-1);
 	}
 

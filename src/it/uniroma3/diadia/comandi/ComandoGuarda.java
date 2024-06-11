@@ -11,7 +11,6 @@ public class ComandoGuarda extends AbstractComando{
 	public void esegui(Partita partita) {
 		this.getIo().mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 		this.getIo().mostraMessaggio("Hai ancora: " + partita.getGiocatore().getCfu() + "CFU");
-		this.getIo().mostraMessaggio(partita.getStanzaCorrente().getPersonaggio().getNome());
 		this.getIo().mostraMessaggio(partita.getGiocatore().getBorsa().toString());
 
 	}

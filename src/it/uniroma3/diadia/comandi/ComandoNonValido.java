@@ -3,10 +3,12 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 
 public class ComandoNonValido extends AbstractComando{
-	private final static String NOME = "Comando non valido";
+	
+	private final static String NOME = "Comando sconosciuto";
+	
 	@Override 
 	public void esegui(Partita partita) {
-		System.out.println("Comando sconosciuto");
+		this.getIo().mostraMessaggio("Comando sconosciuto");
 	}
 	
 	@Override

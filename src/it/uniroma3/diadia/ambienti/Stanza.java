@@ -168,6 +168,10 @@ public class Stanza {
 		if (nomiAttrezzi != null) {
 			risultato.append(nomiAttrezzi.toString()).append(" ");
 		}
+		
+
+		risultato.append("\nPersonaggio: ");
+		risultato.append(this.getPersonaggio().getNome());
 
 		return risultato.toString();
 	}

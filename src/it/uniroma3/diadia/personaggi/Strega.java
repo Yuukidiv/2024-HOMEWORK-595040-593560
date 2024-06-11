@@ -16,7 +16,7 @@ stanza adiacente che contiene meno attrezzi
 public class Strega extends AbstractPersonaggio {
 	private static final String MESSAGGIO_STREGA_NON_SALUTATA = "Sono molto permalosa, non si saluta? Vattene un pò!";
 	private static final String MESSAGGIO_STREGA_SALUTATA = "Sono permalosa, ma salutandomi ecco che te ne vai in una stanza zeppa di attrezzini!";
-	private Attrezzo attrezzo; // usare per il punto 5 cont dove bisogna fare il check maybe
+	private Attrezzo attrezzo; 
 	public Strega(String nome, String presentazione) {
 		super(nome, presentazione);
 	}

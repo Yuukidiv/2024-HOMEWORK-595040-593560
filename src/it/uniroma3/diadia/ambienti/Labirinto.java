@@ -6,42 +6,43 @@ import java.util.Map;
 
 import it.uniroma3.diadia.CaricatoreLabirinto;
 import it.uniroma3.diadia.FormatoFileNonValidoException;
-import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.Cane;
 import it.uniroma3.diadia.personaggi.Mago;
 import it.uniroma3.diadia.personaggi.Strega;
 
-public class Labirinto {
-
-	private Stanza stanzaCorrente;
+public class Labirinto{
+	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
 
 	private Labirinto(String nomeFile) throws FileNotFoundException, FormatoFileNonValidoException {
-		CaricatoreLabirinto c = new CaricatoreLabirinto(nomeFile);
+		CaricatoreLabirinto c =
+				new CaricatoreLabirinto(nomeFile);
 		c.carica();
-		this.stanzaCorrente = c.getStanzaIniziale();
+		this.stanzaIniziale = c.getStanzaIniziale();
 		this.stanzaVincente = c.getStanzaVincente();
 	}
-
-	/**
-	 * Crea tutte le stanze e le porte di collegamento
-	 */
-	//    private void creaStanze() {
+	//    /**
+	//     * Crea tutte le stanze e le porte di collegamento
+	//     */
+	//    public void creaStanze() {
 	//
 	//		/* crea gli attrezzi */
 	//    	Attrezzo lanterna = new Attrezzo("lanterna",3);
 	//		Attrezzo osso = new Attrezzo("osso",1);
+	//		Attrezzo piedediporco = new Attrezzo("piedediporco",2);
+	//		Attrezzo vanga = new Attrezzo("vanga",1);
+	//		Attrezzo pala = new Attrezzo("pala",1);
+	//
 	//    	
 	//		/* crea stanze del labirinto */
 	//		Stanza atrio = new Stanza("Atrio");
-	//		Stanza aulaN11 = new Stanza("Aula N11");
-	//		Stanza aulaN10 = new Stanza("Aula N10");
-	//		Stanza laboratorio = new Stanza("Laboratorio Campus");
+	//		Stanza aulaN11 = new StanzaMagica("Aula N11");
+	//		Stanza aulaN10 = new StanzaBloccata("Aula N10", "est", "piedediporco");
+	//		Stanza laboratorio = new StanzaBuia("Laboratorio Campus", "lanterna");
 	//		Stanza biblioteca = new Stanza("Biblioteca");
 	//		
 	//		/* collega le stanze */
-	//		/*
 	//		atrio.impostaStanzaAdiacente("nord", biblioteca);
 	//		atrio.impostaStanzaAdiacente("est", aulaN11);
 	//		atrio.impostaStanzaAdiacente("sud", aulaN10);
@@ -54,15 +55,23 @@ public class Labirinto {
 	//		laboratorio.impostaStanzaAdiacente("est", atrio);
 	//		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
 	//		biblioteca.impostaStanzaAdiacente("sud", atrio);
-	//*/
+	//
 	//        /* pone gli attrezzi nelle stanze */
 	//		aulaN10.addAttrezzo(lanterna);
 	//		atrio.addAttrezzo(osso);
+	//		atrio.addAttrezzo(vanga);
+	//		atrio.addAttrezzo(pala);
+	//		aulaN11.addAttrezzo(piedediporco);
 	//
 	//		// il gioco comincia nell'atrio
 	//        stanzaCorrente = atrio;  
 	//		stanzaVincente = biblioteca;
 	//    }
+
+	public static LabirintoBuilder newBuilder(String labirinto) throws FileNotFoundException, FormatoFileNonValidoException {
+		return new LabirintoBuilder(labirinto);
+	}
+
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}
@@ -70,23 +79,25 @@ public class Labirinto {
 	public void setStanzaVincente(Stanza stanzaVincente) {
 		this.stanzaVincente = stanzaVincente;
 	}
-
-
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
+		this.stanzaIniziale = stanzaCorrente;
 	}
 
 	public Stanza getStanzaCorrente() {
-		return this.stanzaCorrente;
+		return this.stanzaIniziale;
 	}
-	
 
-	public static LabirintoBuilder newBuilder(String labirinto) throws FileNotFoundException, FormatoFileNonValidoException {
-		return new LabirintoBuilder(labirinto);
-	}
-	
+	//static nested class LabirintoBuilder======================
+	//===========================================
+	//===========================================
+	//===========================================
+	//===========================================
 	public static class LabirintoBuilder {
-
+		
+		public static  class Pippo {
+			//another useless nested class
+		}
+		
 		private Labirinto labirinto;
 		private Stanza ultimaStanzaAggiunta;
 		private Map<String, Stanza> nome2stanza;
@@ -200,6 +211,7 @@ public class Labirinto {
 			this.ultimaStanzaAggiunta = stanza;
 			this.nome2stanza.put(stanza.getNome(), stanza);
 		}
-
+		
 	}
+
 }
