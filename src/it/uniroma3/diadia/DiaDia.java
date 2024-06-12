@@ -83,7 +83,7 @@ public class DiaDia {
 //				.addAdiacenza("LabCampusOne","Bagno","nord")
 //				.addAdiacenza("Bagno","Biblioteca","ovest")
 //				.getLabirinto();
-		Labirinto labirinto = Labirinto.newBuilder("labirinto5.txt").getLabirinto();
+		Labirinto labirinto = Labirinto.newBuilder("labirinto.txt").getLabirinto();
 		DiaDia gioco = new DiaDia(ioconsole, labirinto);
 		gioco.gioca();
 	}
